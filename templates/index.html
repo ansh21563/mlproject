@@ -1,33 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Student Performance Prediction</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Student Performance Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Welcome to the Prediction App</h1>
-    <form action="/predictdata" method="post">
-        <label>Gender:</label>
-        <input type="text" name="gender"><br><br>
+  <div class="app-wrap">
+    <div class="card" role="main">
 
-        <label>Race/Ethnicity:</label>
-        <input type="text" name="race_ethnicity"><br><br>
+      <!-- LEFT: Form -->
+      <div>
+        <div class="brand">
+          <div class="logo">SP</div>
+          <div>
+            <div class="title">Student Exam Performance</div>
+            <div class="subtitle">Predict the Math score using reading & writing</div>
+          </div>
+        </div>
 
-        <label>Parental Level of Education:</label>
-        <input type="text" name="parental_level_of_education"><br><br>
+        {% if error %}
+          <div style="color:red; margin-bottom:12px;">{{ error }}</div>
+        {% endif %}
 
-        <label>Lunch:</label>
-        <input type="text" name="lunch"><br><br>
+        <form action="{{ url_for('predict_datapoint') }}" method="post" autocomplete="off">
+          <div class="field">
+            <label>Gender</label>
+            <select name="gender" required>
+              <option value="" disabled selected>Select Gender</option>
+              <option value="male">male</option>
+              <option value="female">female</option>
+            </select>
+          </div>
 
-        <label>Test Preparation Course:</label>
-        <input type="text" name="test_preparation_course"><br><br>
+          <div class="field">
+            <label>Race / Ethnicity</label>
+            <select name="race_ethnicity" required>
+              <option value="" disabled selected>Select Group</option>
+              <option value="group A">group A</option>
+              <option value="group B">group B</option>
+              <option value="group C">group C</option>
+              <option value="group D">group D</option>
+              <option value="group E">group E</option>
+            </select>
+          </div>
 
-        <label>Reading Score:</label>
-        <input type="number" name="reading_score"><br><br>
+          <div class="field">
+            <label>Parental Level of Education</label>
+            <select name="parental_level_of_education" required>
+              <option value="" disabled selected>Select Education</option>
+              <option value="associate's degree">associate's degree</option>
+              <option value="bachelor's degree">bachelor's degree</option>
+              <option value="high school">high school</option>
+              <option value="master's degree">master's degree</option>
+              <option value="some college">some college</option>
+              <option value="some high school">some high school</option>
+            </select>
+          </div>
 
-        <label>Writing Score:</label>
-        <input type="number" name="writing_score"><br><br>
+          <div class="field">
+            <label>Lunch</label>
+            <select name="lunch" required>
+              <option value="" disabled selected>Select Lunch</option>
+              <option value="standard">standard</option>
+              <option value="free/reduced">free/reduced</option>
+            </select>
+          </div>
 
-        <button type="submit">Predict</button>
-    </form>
+          <div class="field">
+            <label>Test Preparation Course</label>
+            <select name="test_preparation_course" required>
+              <option value="" disabled selected>Select Course</option>
+              <option value="none">none</option>
+              <option value="completed">completed</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Reading Score (0–100)</label>
+            <input type="number" name="reading_score" min="0" max="100" required />
+          </div>
+
+          <div class="field">
+            <label>Writing Score (0–100)</label>
+            <input type="number" name="writing_score" min="0" max="100" required />
+          </div>
+
+          <button class="btn" type="submit">Predict</button>
+          <div class="small">Model trained on Student Performance dataset — inputs must match listed options.</div>
+        </form>
+      </div>
+
+    </div>
+  </div>
 </body>
 </html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Prediction Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="app-wrap">
+    <div class="card" style="grid-template-columns:1fr; max-width:520px; text-align:center;">
+
+      <div style="padding:22px;">
+        <div class="logo" style="margin:0 auto 10px;">SP</div>
+        <h2 style="margin:6px 0 8px; color:#fff">Predicted Math Score</h2>
+        <div style="font-size:44px; font-weight:800; margin:10px 0; color: #fff">
+          {{ results }}
+        </div>
+        <p style="color:var(--muted)">Prediction based on reading & writing scores</p>
+
+        <div style="margin-top:18px;">
+          <a class="btn" href="{{ url_for('index') }}">Predict Again</a>
+        </div>
+
+        <!-- Input Summary -->
+        <div style="margin-top:18px; font-size:13px; color:var(--muted);">
+          <div class="preview-row" style="margin-top:10px; justify-content:center;">
+            <div class="preview-badge">gender — {{ gender }}</div>
+            <div class="preview-badge">group — {{ race_ethnicity }}</div>
+            <div class="preview-badge">parent — {{ parental_level_of_education }}</div>
+            <div class="preview-badge">lunch — {{ lunch }}</div>
+            <div class="preview-badge">prep — {{ test_preparation_course }}</div>
+            <div class="preview-badge">reading — {{ reading_score }}</div>
+            <div class="preview-badge">writing — {{ writing_score }}</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
+
+
