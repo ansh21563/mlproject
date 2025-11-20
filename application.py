@@ -4,7 +4,7 @@ import pandas as pd
 
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
 
-application = Flask(__name__)
+application =Flask(__name__)
 app = application
 
 # Home page
@@ -48,4 +48,4 @@ def predict_datapoint():
         return render_template('index.html', error="Invalid input or server error.")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
+    app.run(host="0.0.0.0")
