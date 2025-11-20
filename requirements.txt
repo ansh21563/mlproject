@@ -1,5 +1,4 @@
 blinker==1.6.2
-catboost==1.2
 click==8.1.7
 colorama==0.4.6
 contourpy==1.1.1
@@ -32,5 +31,9 @@ six==1.16.0
 threadpoolctl==3.3.0
 tzdata==2024.1
 Werkzeug==3.0.3
-xgboost==1.7.6
+
+# Safe versions for EB
+catboost==1.0.6
+xgboost==1.6.2
+
 zipp==3.17.0
